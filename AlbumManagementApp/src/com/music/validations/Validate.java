@@ -1,4 +1,5 @@
 //License Information
+
 package com.music.validations;
 
 import com.music.core.ArtistType;
@@ -19,20 +20,25 @@ public final class Validate {
 
     //validation for the date variables
     public static boolean validateDate(int year) {
-
+        
+        //year must be 4 digit value
         int current = Integer.parseInt(Year.now().toString());
-        return year < current;
+        int length = String.valueOf(year).length(); //convert the year into the string object and get the length.
+        return year < current && length == 4;
     }
 
     //validation for artist type
     public static boolean validateArtistType(int type) {
 
         //loop through all the enum constants
+        //New Java Loop introduced in Java 8 and above name : For Each Loop.
         for (ArtistType at : ArtistType.values()) {
 
             if (type == at.getSelection()) {//check the selected value
                 return true;
             }
+            
+            break; //stop the loop after found.
         }
         return false;
     }
@@ -45,6 +51,7 @@ public final class Validate {
             if(genre == at.getSelection()){
                 return true;
             }
+            break;
         }
         
         return false;
@@ -54,5 +61,20 @@ public final class Validate {
     public static boolean validateDuration(int duration) {
         //validate the duration as positive.
         return duration > 0;
+    }
+    
+    //validation for the singer artist type
+    public static boolean validateSinger(int singerType){
+        return singerType==2;
+    }
+    
+    //validation for the writer artist type
+    public static boolean validateWriter(int writerType){
+        return writerType == 1;
+    }
+    
+    //validation for the composer artist type
+    public static boolean validateComposer(int composerType){
+        return composerType == 3;
     }
 }

@@ -1,4 +1,5 @@
 //License Information
+
 package com.music.core;
 
 import com.music.validations.Validate;
@@ -19,7 +20,11 @@ public final class Artist {
     }
 
     public void setType(ArtistType type) {
-        this.type = type;
+        if(Validate.validateArtistType(type.getSelection())){
+            this.type = type;
+        }
+        
+        
     }
 
     public String getName() {
@@ -27,7 +32,6 @@ public final class Artist {
     }
 
     public void setName(String name) {
-        
         if (Validate.validateName(name)) { //validate the name before set
             this.name = name;
         }
@@ -39,7 +43,9 @@ public final class Artist {
     }
 
     public void setYearOfBirth(int yearOfBirth) {
-        this.yearOfBirth = yearOfBirth;
+        if(Validate.validateDate(yearOfBirth)){
+            this.yearOfBirth = yearOfBirth;
+        }
     }
 
     //methods

@@ -2,6 +2,8 @@
 
 package com.music.core;
 
+import com.music.validations.Validate;
+
 /**
  * 
  * @author LahiruCW
@@ -23,7 +25,9 @@ public final class Publisher {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(Validate.validateName(name)){
+            this.name = name;
+        }
     }
 
     public String getAddress() {
@@ -31,7 +35,9 @@ public final class Publisher {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        if(Validate.validateName(address)){
+            this.address = address;
+        }
     }
 
     public int getYearOfRegister() {
@@ -39,7 +45,9 @@ public final class Publisher {
     }
 
     public void setYearOfRegister(int yearOfRegister) {
-        this.yearOfRegister = yearOfRegister;
+        if(Validate.validateDate(yearOfRegister)){
+            this.yearOfRegister = yearOfRegister;
+        }
     }
 
     @Override

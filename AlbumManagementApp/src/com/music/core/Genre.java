@@ -23,8 +23,5 @@ public enum Genre {
 
     public int getSelection() {
         return selection;
-    }
-    
-    
-    
+    }  
 }

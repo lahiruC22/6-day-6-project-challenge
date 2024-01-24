@@ -1,13 +1,14 @@
 //License Information
-
 package com.music.core;
+
+import com.music.validations.Validate;
 
 /**
  *
  * @author LahiruCW
  */
 public final class Song {
-    
+
     //declaration of variables
     private String title;
     private Genre genre;
@@ -22,7 +23,9 @@ public final class Song {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        if (Validate.validateName(title)) {
+            this.title = title;
+        }
     }
 
     public Genre getGenre() {
@@ -30,7 +33,9 @@ public final class Song {
     }
 
     public void setGenre(Genre genre) {
-        this.genre = genre;
+        if (Validate.validateGenre(genre.getSelection())) {
+            this.genre = genre;
+        }
     }
 
     public Artist getSinger() {
@@ -38,7 +43,9 @@ public final class Song {
     }
 
     public void setSinger(Artist singer) {
-        this.singer = singer;
+        if (Validate.validateSinger(singer.getType().getSelection())) {
+            this.singer = singer;
+        }
     }
 
     public Artist getWriter() {
@@ -46,7 +53,9 @@ public final class Song {
     }
 
     public void setWriter(Artist writer) {
-        this.writer = writer;
+        if (Validate.validateWriter(writer.getType().getSelection())) {
+            this.writer = writer;
+        }
     }
 
     public Artist getComposer() {
@@ -54,7 +63,9 @@ public final class Song {
     }
 
     public void setComposer(Artist composer) {
-        this.composer = composer;
+        if (Validate.validateComposer(composer.getType().getSelection())) {
+            this.composer = composer;
+        }
     }
 
     public int getDurationInSecond() {
@@ -62,7 +73,9 @@ public final class Song {
     }
 
     public void setDurationInSecond(int durationInSecond) {
-        this.durationInSecond = durationInSecond;
+        if (Validate.validateDuration(durationInSecond)) {
+            this.durationInSecond = durationInSecond;
+        }
     }
 
     public int getYearOfRelease() {
@@ -70,16 +83,18 @@ public final class Song {
     }
 
     public void setYearOfRelease(int yearOfRelease) {
-        this.yearOfRelease = yearOfRelease;
+        if (Validate.validateDate(yearOfRelease)) {
+            this.yearOfRelease = yearOfRelease;
+        }
     }
-    
+
     //declaring methods
-    public double getDurationInMinutes(){
+    public double getDurationInMinutes() {
         //implement the method in here.
         return 0.0;
     }
-    
-    public double getDurationInHour(){
+
+    public double getDurationInHour() {
         //implement the method in here.
         return 0.0;
     }
