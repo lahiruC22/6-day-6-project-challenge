@@ -90,12 +90,10 @@ public final class Song {
 
     //declaring methods
     public double getDurationInMinutes() {
-        //implement the method in here.
-        return 0.0;
+        return (double)(this.durationInSecond/60.0);
     }
 
     public double getDurationInHour() {
-        //implement the method in here.
-        return 0.0;
+        return (double)(getDurationInMinutes()/60.0);
     }
 }

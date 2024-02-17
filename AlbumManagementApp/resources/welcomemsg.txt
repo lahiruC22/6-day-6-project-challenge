@@ -1,0 +1,10 @@
+Welcome to Musica 1.0
+A simple Java program that manage and organize musics details
+
+Usage: Java AlbumManagementApp
+
+To get help about a particular menu, please select that menu and type help to see
+how to use the application in particular section.
+
+Eg: If you want to know how to manage music albums data, select manage albums from
+the menu and type "help" to get more instructions.

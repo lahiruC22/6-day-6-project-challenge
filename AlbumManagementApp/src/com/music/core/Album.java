@@ -2,6 +2,8 @@
 
 package com.music.core;
 
+import com.music.validations.Validate;
+
 /**
  *
  * @author LahiruCW
@@ -14,12 +16,19 @@ public final class Album {
     private Song[] listOfSongs;
     private Publisher publisher;
 
+    public Album(String albumName, Publisher publisher) {
+        this.albumName = albumName;
+        this.publisher = publisher;
+    }
+
     public String getAlbumName() {
         return albumName;
     }
 
     public void setAlbumName(String albumName) {
-        this.albumName = albumName;
+        if(Validate.validateName(albumName)){
+            this.albumName = albumName;
+        }
     }
 
     public int getYearOfRelease() {
@@ -27,7 +36,9 @@ public final class Album {
     }
 
     public void setYearOfRelease(int yearOfRelease) {
-        this.yearOfRelease = yearOfRelease;
+        if(Validate.validateDate(yearOfRelease)){
+            this.yearOfRelease = yearOfRelease;
+        }
     }
 
     public Song[] getListOfSongs() {
@@ -35,7 +46,9 @@ public final class Album {
     }
 
     public void setListOfSongs(Song[] listOfSongs) {
-        this.listOfSongs = listOfSongs;
+        if(Validate.validateSongList(listOfSongs)){
+            this.listOfSongs = listOfSongs;
+        }
     }
 
     public Publisher getPublisher() {
@@ -43,25 +56,51 @@ public final class Album {
     }
 
     public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
+        if(Validate.validatePublisher(publisher)){
+            this.publisher = publisher;
+        }
     }
     
     //declaring methods
     public Song getSongByTitle(String title){
-        //return song object //must be implemented
-        Song request = null;
-        return request;
+        for(Song item: this.listOfSongs){
+            if(item.getTitle().equals(title)){
+                return item;
+            }
+        }
+        return null;
     }
     
-    public Song[] getSongByArtist(String name){
-        //return song array object. //must be implemented
-        Song[] artist = new Song[5];
-        return artist;
+    //overide method
+    public Song[] getSongsByArtist(String name){
+        
+        int index = 0;
+        Song[] songsByArtist = new Song[10]; //local array for return
+        
+        for(Song item: this.listOfSongs){
+            //assumption - consider only the singer artist
+            if(item.getWriter().getName().equals(name) || 
+                    item.getSinger().getName().equals(name) ||
+                    item.getComposer().getName().equals(name)){
+                songsByArtist[index] = item;
+                index++;
+            }
+        }
+        
+        return songsByArtist;
+
     }
     
     public Song[] getSongByYear(int year){
-        //return song array object //must be implemented
-        Song[] yearList = new Song[5];
+        int index = 0;
+        Song[] yearList = new Song[10];
+        
+        for(Song item:this.listOfSongs){
+            if(item.getYearOfRelease() == year){
+                yearList[index] = item;
+                index++;
+            }
+        }
         return yearList;
     }
 }

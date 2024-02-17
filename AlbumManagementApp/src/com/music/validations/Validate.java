@@ -4,6 +4,9 @@ package com.music.validations;
 
 import com.music.core.ArtistType;
 import com.music.core.Genre;
+import com.music.core.Publisher;
+import com.music.core.Song;
+
 import java.time.Year; //import date time package
 
 /**
@@ -76,5 +79,15 @@ public final class Validate {
     //validation for the composer artist type
     public static boolean validateComposer(int composerType){
         return composerType == 3;
+    }
+    
+    //validation for the song list
+    public static boolean validateSongList(Song[] songList){
+        return songList == null || songList.length != 0;
+    }
+    
+    //validation for the publisher
+    public static boolean validatePublisher(Publisher publisher){
+        return publisher!=null;
     }
 }
